@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Code Explainer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>🤖 AI Code Explainer</h1>
+
+    <p class="subtitle">
+        Paste your source code below and get an AI-powered explanation,
+        algorithm, complexity analysis, and improvement suggestions.
+    </p>
+
+    <form action="/explain" method="POST">
+
+        <label>Enter Source Code</label>
+
+        <textarea
+            name="code"
+            rows="18"
+            placeholder="Paste your code here..."
+            required>{{ code if code else '' }}</textarea>
+
+        <button type="submit">
+            Explain Code
+        </button>
+
+    </form>
+
+    {% if error %}
+    <div class="error">
+        <h3>Error</h3>
+        <p>{{ error }}</p>
+    </div>
+    {% endif %}
+
+    {% if result %}
+    <div class="result">
+
+        <h2>📄 AI Explanation</h2>
+
+        <pre>{{ result }}</pre>
+
+    </div>
+    {% endif %}
+
+</div>
+
+<footer>
+    <p>AI Code Explainer | Internship Mini Project | Flask + Gemini AI</p>
+</footer>
+
+</body>
+</html>
